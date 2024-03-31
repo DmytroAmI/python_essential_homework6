@@ -71,12 +71,10 @@ class MyList(object):
             current_node = self._head
             self._head = node
             self._head.next = current_node
-            self._length += 1
         elif index == self._length:
             current_node = self._tail
             self._tail = node
             self._tail.next = current_node
-            self._length += 1
         else:
             current_node = self._head
             for _ in range(index):
@@ -86,7 +84,7 @@ class MyList(object):
             node.next = current_node
             node.prev = current_node.prev
 
-            self._length += 1
+        self._length += 1
 
     def remove_first(self):
         """Remove the first element from the list"""
@@ -125,12 +123,8 @@ class MyList(object):
 
     def clear(self):
         """Clear the list"""
-        if self._head is None:
-            return
-        else:
-            self._head.next = None
-            self._head = self._head.next
-            self._length = 0
+        self._tail = self._head = None
+        self._length = 0
 
     def __len__(self):
         """Return the length of the list"""
